@@ -15,12 +15,9 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
-        // Referência ao botão "Começar"
         val startButton: Button = findViewById(R.id.start_button)
 
-        // Evento de clique no botão "Começar"
         startButton.setOnClickListener {
-            // Inicia a MainActivity (onde está o quiz)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -44,12 +41,10 @@ class MainActivity : AppCompatActivity() {
         val answerButtonC: Button = findViewById(R.id.ans_C)
         val submitButton: Button = findViewById(R.id.submit_btn)
 
-        // Inicialmente, esconde o botão "Reiniciar"
         submitButton.visibility = View.GONE
 
         totalQuestionsTextView.text = "Total de questões: ${perguntas.questions.size}"
 
-        // Atualiza a questão atual
         fun updateQuestion() {
             questionTextView.text = perguntas.questions[currentQuestionIndex]
             answerButtonA.text = perguntas.choices[currentQuestionIndex][0]
@@ -57,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             answerButtonC.text = perguntas.choices[currentQuestionIndex][2]
         }
 
-        // Verifica a resposta e avança para a próxima pergunta
         fun checkAnswer(selectedAnswer: String) {
             if (selectedAnswer == perguntas.correctAnswers[currentQuestionIndex]) {
                 score++
@@ -66,42 +60,36 @@ class MainActivity : AppCompatActivity() {
             if (currentQuestionIndex < perguntas.questions.size) {
                 updateQuestion()
             } else {
-                // Finaliza o quiz e exibe o botão de reinício
                 questionTextView.text = "Você acertou $score de ${perguntas.questions.size} perguntas!"
-                answerButtonA.isEnabled = false
-                answerButtonB.isEnabled = false
-                answerButtonC.isEnabled = false
-                submitButton.visibility = View.VISIBLE // Exibe o botão
+                answerButtonA.visibility = View.GONE
+                answerButtonB.visibility = View.GONE
+                answerButtonC.visibility = View.GONE
+                submitButton.visibility = View.VISIBLE // Exibe o botão "Reiniciar"
                 submitButton.text = "Reiniciar"
             }
         }
 
-        // Configura o clique nos botões de resposta
         answerButtonA.setOnClickListener { checkAnswer(answerButtonA.text.toString()) }
         answerButtonB.setOnClickListener { checkAnswer(answerButtonB.text.toString()) }
         answerButtonC.setOnClickListener { checkAnswer(answerButtonC.text.toString()) }
 
-        // Clique no botão "Reiniciar"
         submitButton.setOnClickListener {
             score = 0
             currentQuestionIndex = 0
-            answerButtonA.isEnabled = true
-            answerButtonB.isEnabled = true
-            answerButtonC.isEnabled = true
+            answerButtonA.visibility = View.VISIBLE
+            answerButtonB.visibility = View.VISIBLE
+            answerButtonC.visibility = View.VISIBLE
             submitButton.visibility = View.GONE // Esconde o botão novamente
             updateQuestion()
         }
 
-        // Aplica o efeito de hover com delay nos botões de resposta
         applyHoverEffect(answerButtonA)
         applyHoverEffect(answerButtonB)
         applyHoverEffect(answerButtonC)
 
-        // Inicializa o quiz
         updateQuestion()
     }
 
-    // Função para aplicar o efeito de hover com delay
     private fun applyHoverEffect(button: Button) {
         val handler = Handler(Looper.getMainLooper())
         button.setOnTouchListener { view, motionEvent ->
@@ -121,3 +109,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
