@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0b5739"
+    android:padding="16dp"
+    android:id="@+id/choices_layout">
+
+    <!-- Texto Total de Questões -->
+    <TextView
+        android:id="@+id/total_questoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textColor="#0b5739"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp" />
+
+    <ImageView
+        android:id="@+id/start_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/qq"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Imagem de Wicked" />
+
+    <!-- Pergunta -->
+    <TextView
+        android:id="@+id/questoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pergunta"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Botões de Resposta -->
+    <Button
+        android:id="@+id/ans_A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Resposta A"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:backgroundTint="#50C878"/>
+
+    <Button
+        android:id="@+id/ans_B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Resposta B"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:backgroundTint="#50C878"/>
+
+    <Button
+        android:id="@+id/ans_C"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resposta C"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:backgroundTint="#50C878"/>
+
+    <!-- Espaço final vazio -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <!-- Botão de Reinício -->
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="gone"  android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:backgroundTint="#50C878"/>
+
+</LinearLayout>
